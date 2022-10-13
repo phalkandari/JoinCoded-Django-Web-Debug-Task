@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from cinescape import views
+from cinescape.views import movie_list_view, movie_detail_view
 
 
 urlpatterns = [

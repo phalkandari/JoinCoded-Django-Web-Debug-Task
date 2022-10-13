@@ -1,5 +1,5 @@
+from email.policy import default
 from django.db import models
-from unittest.util import _MAX_LENGTH
 
 
 class Category(models.Model):
@@ -9,15 +9,15 @@ class Category(models.Model):
         ADULT_GUARDIAN = "R"
         RESTRICTED = "X"
 
-    rating = models.CharField(_MAX_LENGTH=1, choices=CategoryType)
-    name = models.CharField(_MAX_LENGTH=50)
+    rating = models.CharField(max_length=50, choices=CategoryType.choices)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name + ' ' + self.rating.CategoryType
 
 
 class Movies(models.Model):
-    name = models.CharField(_MAX_LENGTH=50)
+    name = models.CharField(max_length=50)
     released_at = models.DateField()
     description = models.TextField()
     poster = models.URLField()
@@ -27,19 +27,19 @@ class Movies(models.Model):
 
 
 class Location(models.Model):
-    geolocation = models.CharField(_MAX_LENGTH=250)
-    area_name = models.CharField(_MAX_LENGTH=50)
-    address_one = models.CharField(_MAX_LENGTH=250)
-    address_two = models.CharField(_MAX_LENGTH=250)
+    geolocation = models.CharField(max_length=250)
+    area_name = models.CharField(max_length=50)
+    address_one = models.CharField(max_length=250)
+    address_two = models.CharField(max_length=250)
 
     def __str__(self):
         return self.name
 
 
 class Theater(models.Model):
-    name = models.CharField(_MAX_LENGTH=50)
-    capacity = models.PositiveIntegerField()
-    booked_seats = models.PositiveIntegerField()
+    name = models.CharField(max_length=50)
+    capacity = models.PositiveIntegerField(default=True)
+    booked_seats = models.PositiveIntegerField(default=True)
 
     def __str__(self):
         return self.name

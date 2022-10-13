@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Category, Movies
+from .models import Category, Movies, Location, Theater
+
 
 def movie_list_view(request):
     categories = Category.object.all()
@@ -18,10 +19,10 @@ def movie_list_view(request):
     return HttpResponse('index.html', context)
 
 
-
 def movie_detail_view(request, movie_id):
     categories = Category.objects.all()
-    movie = Movies.objects.first() #this is supposed to be dynamic, as in it retrieves using the passed parameter
+    # this is supposed to be dynamic, as in it retrieves using the passed parameter
+    movie = Movies.objects.first()
     context = {
         'categories': [category.name.Title() for category in categories],
         'movie': {
