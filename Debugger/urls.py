@@ -20,8 +20,6 @@ from cinescape import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movies/', movie_list_view), name='movie_list',
-    path('movies/<int:moveis_id>/', 
-        movie_detail_view, name="movie_detail"
-    )
+    path('movies/', movie_list_view, name='movie_list'),
+    path('movies/<int:moveis_id>/', movie_detail_view, name="movie_detail")
 ]

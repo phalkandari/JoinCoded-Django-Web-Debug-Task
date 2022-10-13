@@ -1,7 +1,8 @@
 from django.db import models
 from unittest.util import _MAX_LENGTH
 
-class Category(Model):
+
+class Category(models.Model):
     class CategoryType(models.TextChoices):
         GENERAL = "G"
         PARENTAL_GUIDANCE = "PG"
@@ -22,9 +23,10 @@ class Movies(models.Model):
     poster = models.URLField()
 
     def __str__(self):
-        return self.name 
+        return self.name
 
-class Location(models):
+
+class Location(models.Model):
     geolocation = models.CharField(_MAX_LENGTH=250)
     area_name = models.CharField(_MAX_LENGTH=50)
     address_one = models.CharField(_MAX_LENGTH=250)
@@ -33,13 +35,14 @@ class Location(models):
     def __str__(self):
         return self.name
 
-class Theater(Model.models):
+
+class Theater(models.Model):
     name = models.CharField(_MAX_LENGTH=50)
     capacity = models.PositiveIntegerField()
     booked_seats = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.name 
+        return self.name
 
     @property
     def check_availablity(self):
